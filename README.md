@@ -26,17 +26,12 @@ Once N inputs are available it output's the sum of the N bytes.
 
 The Module has the following interfaces:
 
-**Configure** Takes address and data as input,
-
-address:0 = Length, The value written to address 0 is the 'N' Value,
-
-address:1 = start bit, A write to address 1 starts the accumulate +sum process. the start bit is cleared after N inputs are accumulated.
-
-**in_put** 8 bit data input.
-
-**out_put** 8 bit data output.
-
-**interrupt** Raised when there is an exception condition, e.g. an input transaction when start is not set.
+* **Configure** Takes address and data as input,
+  * address:0 = Length, The value written to address 0 is the 'N' Value,
+  * address:1 = start bit, A write to address 1 starts the accumulate +sum process. the start bit is cleared after N inputs are accumulated.
+* **in_put** 8 bit data input.
+* **out_put** 8 bit data output.
+* **interrupt** Raised when there is an exception condition, e.g. an input transaction when start is not set.
 
 ## Req, En Protocol.
 
