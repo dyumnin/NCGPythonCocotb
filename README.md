@@ -105,4 +105,4 @@ A sample transaction waveform
 2. Error free Python code.
 3. Correctness of the testcase implementation.
 
-**In case of any doubts/issues please raise a ticket at https://github.com/dyumnin/NCGPythonCocotb/issues **
+**In case of any doubts/issues please raise a ticket at https://github.com/dyumnin/NCGPythonCocotb/issues**
