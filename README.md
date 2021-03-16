@@ -101,3 +101,9 @@ A sample transaction waveform
 3. Correctness of the testcase implementation.
 
 **In case of any doubts/issues please raise a ticket at https://github.com/dyumnin/NCGPythonCocotb/issues**
+
+# Cheatsheet
+
+1. Information related to cocotb docs.cocotb.org/ 
+2. Starting point for learning about software testing. https://en.wikipedia.org/wiki/Software_testing
+3. What is a testcase https://softwaretestingfundamentals.com/test-case/ 
