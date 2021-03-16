@@ -106,4 +106,5 @@ A sample transaction waveform
 
 1. Information related to cocotb docs.cocotb.org/ 
 2. Starting point for learning about software testing. https://en.wikipedia.org/wiki/Software_testing
-3. What is a testcase https://softwaretestingfundamentals.com/test-case/ 
+3. https://www.softwaretestinghelp.com/how-to-write-effective-test-cases-test-cases-procedures-and-definitions/
+
