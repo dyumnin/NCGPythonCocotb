@@ -1,6 +1,6 @@
-# NCGPythonCocotb
+# Dyumnin Semiconductors: Take home coding test for Verification/QC Role.
 
-Written test for applicants for Python + Cocotb QC developer
+Written test for applicants for verification/QC role. Tests effective use of Python and CocoTB Framework
 
 # Introduction
 
