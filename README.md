@@ -7,22 +7,22 @@ Written test for applicants for Python + Cocotb QC developer
 This test requires an understanding of 
 
 1. Python3
-2. cocotb framework
-3. Testing methodologies
+2. cocotb framework https://docs.cocotb.org/ 
+3. Testing methodologies https://en.wikipedia.org/wiki/Test-driven_development ,  https://en.wikipedia.org/wiki/Software_testing 
 
 For the specification below:
 
-1. Write a testspecification with a testcase table.
+1. Write a test specification with a testcase table.
 2. Using cocotb framework implement any 2 testcases of which one should be a datapath (din to dout) test.
 
 # Specification
 
-Sum of N Module.
+Sum of N inputs.
 
 ## Introduction.
-This module can be programmed to add N 8 bit data.
+This module can be programmed to add `N` 8 bit data.
 It accepts one 8 bit data per cycle,
-Once N inputs are available it output's the sum of the N bytes.
+Once `N` inputs are available it output's the sum of the N bytes.
 
 The Module has the following interfaces:
 
