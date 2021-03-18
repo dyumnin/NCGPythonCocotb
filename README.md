@@ -100,6 +100,10 @@ A sample transaction waveform
 2. Error free Python code.
 3. Correctness of the testcase implementation.
 
+## Time Limit:
+
+You are expected to complete the test within 2 weeks from the date you were invited to take the test. In case you need extra time send a message.
+
 **In case of any doubts/issues please raise a ticket at https://github.com/dyumnin/NCGPythonCocotb/issues**
 
 # Cheatsheet
