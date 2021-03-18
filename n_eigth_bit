@@ -1,0 +1,93 @@
+\full adder
+
+module full_adder(input ain,bin,cin,output sum, cout);
+	assign sum = ain^bin^cin;
+	assign cout = (ain&bin)|(ain&cin)|bin&cin);
+endmodule
+
+\full_adder_eight
+
+module full_adder_eight(a,b,cin,sum,c_out);
+input [7:0] a,b;
+input cin;
+output [7:0] sum;
+output c_out;
+wire c0,c1,c2,c3,c4,c5,c6;
+full_adder FA1(.a_in(a[0]),.b_in(b[0]),.c_in(cin),.sum_out(sum[0]),.carry_out(c0));
+full_adder FA2(.a_in(a[1]),.b_in(b[1]),.c_in(c0),.sum_out(sum[1]),.carry_out(c1));
+full_adder FA3(.a_in(a[2]),.b_in(b[2]),.c_in(c1),.sum_out(sum[2]),.carry_out(c2));
+full_adder FA4(.a_in(a[3]),.b_in(b[3]),.c_in(c2),.sum_out(sum[3]),.carry_out(c3));
+full_adder FA5(.a_in(a[4]),.b_in(b[4]),.c_in(c3),.sum_out(sum[4]),.carry_out(c4));
+full_adder FA6(.a_in(a[5]),.b_in(b[5]),.c_in(c4),.sum_out(sum[5]),.carry_out(c5));
+full_adder FA7(.a_in(a[6]),.b_in(b[6]),.c_in(c5),.sum_out(sum[6]),.carry_out(c6));
+full_adder FA8(.a_in(a[7]),.b_in(b[7]),.c_in(c6),.sum_out(sum[7]),.carry_out(c_out));
+endmodule
+
+\n_eight_bit
+
+module n_eight_bit(a,c,clk,reset,req,en,clear,up_down);
+input clk,reset,req,en,clear,up_down;
+input [7:0] a;
+output [7:0] c;
+wire [7:0] b1,b2,b3,b4,b5,b6,b7,b8;
+wire [7:0]cnt;
+always @(posedge clk)
+	begin
+	if(!clear)
+	cnt<=8'h00;
+	else if(load)
+		cnt<=a;
+	else if(up_down)
+		cnt=cnt+1;
+	else
+		cnt=cnt-1;
+	end
+assign c=cnt;
+if(cnt==c)
+	req=1;
+	en=1;
+always @(posedge clk or posedge reset)
+begin
+	if(reset)
+		a=0;
+	else
+		for(int i=0;int i<7;int i++)
+		if(i==7)
+			full_adder_eight FAE1(.cout(b1));
+			full_adder_eight FAE2(.cout(b2));
+			full_adder_eight FAE3(.cout(b3));
+			full_adder_eight FAE4(.cout(b4));
+			full_adder_eight FAE5(.cout(b5));
+			full_adder_eight FAE6(.cout(b6));
+			full_adder_eight FAE7(.cout(b7));
+			full_adder_eight FAE8(.cout(b8));
+		c= b1+b2+b3+b4+b5+b6+b7+b8;
+end
+
+		
+
+
+\n_eight_bit_tb
+
+module n_eight_bit_tb();
+reg [7:0] a1;
+wire [7:0] a2;
+n_eight_bit DUT(.a(a1),.c(a2));
+integer i;
+initial
+	begin
+	{a1,a2} = 0;
+	end
+initial
+		begin
+			for(i=0;i<512;i=i+1)
+				begin
+				{a1} = i;
+				#10;
+				end
+		end
+initial 
+	$monitor("input a1=%b,output a2=%b",a1,a2);
+initial
+	#100 $finish;
+endmodule
