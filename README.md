@@ -8,7 +8,9 @@ This test requires an understanding of
 
 1. Python3
 2. cocotb framework https://docs.cocotb.org/ 
-3. Testing methodologies https://en.wikipedia.org/wiki/Test-driven_development ,  https://en.wikipedia.org/wiki/Software_testing 
+3. Testing methodologies and lifecycle https://en.wikipedia.org/wiki/Test-driven_development ,https://www.guru99.com/software-testing-life-cycle.html,   https://en.wikipedia.org/wiki/Software_testing 
+
+# Test
 
 For the specification below:
 
@@ -102,6 +104,7 @@ A sample transaction waveform
 
 ## Time Limit:
 
+The coding portion of this test takes less than an hour for a practitioner in the field. A fresher in the field will require additional time to understand the concepts.
 You are expected to complete the test within 2 weeks from the date you were invited to take the test. In case you need extra time send a message.
 
 **In case of any doubts/issues please raise a ticket at https://github.com/dyumnin/NCGPythonCocotb/issues**
