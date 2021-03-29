@@ -37,3 +37,14 @@ https://www.youtube.com/watch?v=rfscVS0vtbw
 
 We are an R & D Organisation, i.e. Every project requires exploration of new skills, domains and tools. In such a condition it is not fesible to have a dedicated month long training session before the start of each project.
 What we do provide is access to technical paper's, Protocol Specification, tools etc.The candidate is expected to use these to self-learn the necessary skills to do the job.
+
+**Is this a testing only role?**
+
+No. We are a small startup and everyone is expected to wear more than one hat as per the project requirement. Depending on the project requirement and your skill-set you may also be assigned one or more of the following tasks.
+
+* Firmware Development.
+* Device Driver Development.
+* RTL Coding. Validation & timing closure.
+* PCB Design
+* Application S/W Design
+* Product Design.
