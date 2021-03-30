@@ -12,82 +12,12 @@ This test requires an understanding of
 
 # Test
 
-For the specification below:
+For the design specification in [design_spec.pdf] :
 
-1. Write a test specification with a testcase table.
-2. Using cocotb framework implement any 2 testcases of which one should be a datapath (din to dout) test.
+1. Write a test specification.
+2. Using cocotb framework implement any 2 testcases from the specification, atleast one test should be a datapath (in to out) test.
 
-# Specification
-
-Sum of N inputs.
-
-## Introduction.
-This module can be programmed to add `N` 8 bit data.
-It accepts one 8 bit data per cycle,
-Once `N` inputs are available it output's the sum of the N bytes.
-
-The Module has the following interfaces:
-
-* **Configure** Takes address and data as input,
-  * address:0 = Length, The value written to address 0 is the 'N' Value,
-  * address:1 = start bit, A write to address 1 starts the accumulate +sum process. the start bit is cleared after N inputs are accumulated.
-* **in_put** 8 bit data input.
-* **out_put** 8 bit data output.
-* **interrupt** Raised when there is an exception condition, e.g. an input transaction when start is not set.
-
-## Req, En Protocol.
-
-A transaction happens on an interface when both Req and En are high in a given clock cycle.
-En can never be high unless Req is high.
-
-## Device under test I/O Signals
-
-
-The I/O Signals are
-
-### Out Interface
-
-| Name        | I/O      | size    | props   |
-| --------    | -------- | ------- | ------- |
-| EN_out_get  | I        | 1       |         |
-| out_get     | O        | 8       | reg     |
-| RDY_out_get | O        | 1       |         |
-
-### Interrupt Interface
-
-| Name          | I/O      | size    | props   |
-| --------      | -------- | ------- | ------- |
-| interrupt     | O        | 1       |         |
-| RDY_interrupt | O        | 1       | const   |
-  
-### Clock and reset
-
-| Name     | I/O      | size    | props   |
-| -------- | -------- | ------- | ------- |
-| CLK      | I        | 1       | clock   |
-| RST_N    | I        | 1       | reset   |
-
-### Input interface
-
-  | Name       | I/O      | size    | props   |
-  | --------   | -------- | ------- | ------- |
-  | RDY_in_put | O        | 1       | const   |
-  | in_put     | I        | 8       |         |
-  | EN_in_put  | I        | 1       |         |
-
-### Configuration interface
-
-| Name              | I/O      | size    | props   |
-| --------          | -------- | ------- | ------- |
-| RDY_configure     | O        | 1       | const   |
-| configure_address | I        | 8       |         |
-| configure_data    | I        | 8       | reg     |
-| EN_configure      | I        | 1       |         |
-
-
-A sample transaction waveform
-
-![Sample Transaction Waveform](./pytest_waveform.png)
+**Note** A sample design Implementation is available at https://github.com/dyumnin/NCGPythonCocotb/blob/main/rtl/sumofN.v You can use this to verify your test environment.
 
 # How to take the test
 
@@ -109,8 +39,9 @@ You are expected to complete the test within 2 weeks from the date you were invi
 
 **In case of any doubts/issues please raise a ticket at https://github.com/dyumnin/NCGPythonCocotb/issues**
 
-# Cheatsheet
+# FAQ
 
+Answer to some of the frequently asked question can be found in [FAQ.md] 
 1. Information related to cocotb docs.cocotb.org/ 
 2. Starting point for learning about software testing. https://en.wikipedia.org/wiki/Software_testing
 3. https://www.softwaretestinghelp.com/how-to-write-effective-test-cases-test-cases-procedures-and-definitions/
