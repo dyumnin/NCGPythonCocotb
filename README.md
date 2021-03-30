@@ -12,7 +12,7 @@ This test requires an understanding of
 
 # Test
 
-For the design specification in [design_spec.pdf] :
+For the design specification in [design_spec.pdf](design_spec.pdf) :
 
 1. Write a test specification.
 2. Using cocotb framework implement any 2 testcases from the specification, atleast one test should be a datapath (in to out) test.
@@ -41,7 +41,7 @@ You are expected to complete the test within 2 weeks from the date you were invi
 
 # FAQ
 
-Answer to some of the frequently asked question can be found in [FAQ.md] 
+Answer to some of the frequently asked question can be found in [FAQ.md](FAQ.md) 
 1. Information related to cocotb docs.cocotb.org/ 
 2. Starting point for learning about software testing. https://en.wikipedia.org/wiki/Software_testing
 3. https://www.softwaretestinghelp.com/how-to-write-effective-test-cases-test-cases-procedures-and-definitions/
