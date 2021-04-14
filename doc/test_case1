@@ -1,0 +1,25 @@
+import cocotb
+import random
+from cocotb.clock import Clock
+from cocotb.triggers import FallingEdge,RisingEdge
+@cocotb.test()
+async def sumof_N(dut):
+    dut.EN_out_put<=0
+    clock=Clock(dut.CLK,1,'us')
+    cocotb.fork(clock.start())
+    await FallingEdge(dut.CLK)
+    dut.RST_N<=1
+    await RisingEdge(dut.CLK)
+    dut.EN_configure<=1
+    dut.configure_address<=random.randint(1,8)
+    for i in range(dut.configure_address):
+        dut.configure_data<=random.randint(1,99)
+        await RisingEdge(dut.CLK)
+    dut.EN_configure<=0
+    dut.EN_in_put<=1
+    for i in range(8):
+        await RDY_in_put
+        dut.in_put<=random.randint(1,99)
+        await FallingEdge(dut.CLK)
+    dut.EN_configre<=0
+    dut.EN_out_put<=1
