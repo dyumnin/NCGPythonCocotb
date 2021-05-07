@@ -195,4 +195,3 @@ module sumofN(CLK,
   `endif // BSV_NO_INITIAL_BLOCKS
   // synopsys translate_on
 endmodule  // sumof5
-
