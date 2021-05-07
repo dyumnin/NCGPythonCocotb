@@ -26,7 +26,6 @@ import random
 import warnings
 
 # Parameters
-# N = int(cocotb.top.N)
 N = 5
 
 
@@ -217,12 +216,12 @@ async def rtltb(dut, data_in=data_in):
     await RisingEdge(dut.CLK)	
     await FallingEdge(dut.CLK)	
     dut.EN_out_get <= 0	
-    	
+        
     dut.EN_configure <= 1	
     dut.configure_address <= 0	
     dut.configure_data <= N	
     await RisingEdge(dut.CLK)	
-    	
+        
     dut.EN_configure <= 1	
     dut.configure_address <= 1	
     dut.configure_data <= 1	
