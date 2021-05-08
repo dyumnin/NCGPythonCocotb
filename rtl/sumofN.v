@@ -193,6 +193,14 @@ module sumofN(CLK,
     sum = 8'hAA;
   end
   `endif // BSV_NO_INITIAL_BLOCKS
+  
+  
+  initial begin
+  $dumpfile ("sumofN.vcd");
+  $dumpvars (0, sumofN);
+  #1000;
+end
+  
+  
   // synopsys translate_on
 endmodule  // sumof5
-
