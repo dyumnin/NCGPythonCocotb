@@ -1,5 +1,5 @@
 
-# SHELL=/bin/bash
+SHELL=/bin/bash
 
 .PHONY: all clean
 
