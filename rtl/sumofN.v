@@ -194,5 +194,12 @@ module sumofN(CLK,
   end
   `endif // BSV_NO_INITIAL_BLOCKS
   // synopsys translate_on
+
+  `ifdef COCOTB_SIM
+    initial begin
+      $dumpfile("tb_sumofN.vcd");
+      $dumpvars(0, sumofN);
+    end
+  `endif
 endmodule  // sumof5
 
