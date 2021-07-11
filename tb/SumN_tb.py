@@ -11,11 +11,11 @@ import logging
 import random
 
 class SumN_tb():
-    def __init__(self,dut, overflow_test = False, input_test = False,config_addr_test=False):
+    def __init__(self,dut, input_test = False,config_addr_test=False):
         self.dut = dut
         self.input_test = input_test
         self.config_addr_test = config_addr_test
-        self.overflow_test = overflow_test
+        
         
         cocotb.fork(Clock(dut.CLK, 1, units="ns").start())
         
@@ -146,9 +146,10 @@ class Intr_Mntr(BusMonitor):
                 self._recv(self.bus.interrupt.value)
 
 
-async def test_sum_n(dut, N = 4, overflow_test = False, input_test = False,config_addr_test=False):
-    tb=SumN_tb(dut, overflow_test, input_test,config_addr_test)
+async def test_sum_n(dut, N = 4, input_test = False, config_addr_test=False):
+    tb=SumN_tb(dut, input_test, config_addr_test)
     await tb.reset()
+    exp_sum = 0
     config_N = {"config_enable":1,"config_address":0,"config_data":N}
     if config_addr_test is True:
         config_start = {"config_enable":1,"config_address":0,"config_data":1}
@@ -166,18 +167,40 @@ async def test_sum_n(dut, N = 4, overflow_test = False, input_test = False,confi
             in_put_data = {"enable" : 1,"data":test_data[i]}
             await tb.input_stream.send(in_put_data)
             pkts_recvd += 1
+            exp_sum += test_data[i]
         dut._log.info('Required inputs %d but received %d. Interrupt value = %d'%(N,pkts_recvd,dut.interrupt.value))      
-    else:
+    elif config_addr_test is True:
         for i in range(N):
             in_put_data = {"enable" : 1,"data":test_data[i]}
             await tb.input_stream.send(in_put_data)
+        exp_sum = BinaryValue(0,n_bits = 8,bigEndian=False)
         dut._log.info("Interrupt Value = %d"% dut.interrupt.value) 
+    else : 
+        for i in range(N):
+            in_put_data = {"enable" : 1,"data":test_data[i]}
+            await tb.input_stream.send(in_put_data)
+            exp_sum += test_data[i]
+        dut._log.info("Interrupt Value = %d"% dut.interrupt.value)
         
-    if config_addr_test == True:
-        dut._log.info("Detected Wrong Configuration Address")
     await tb.input_stream.send(dict({"enable":0,"data":0}))
     dut.EN_out_get <= 1
     await RisingEdge(dut.CLK)
+    if input_test is True:
+        if dut.RDY_out_get.value == 0 :
+            dut._log.info('Expected Sum Output value = 0. Sum Ready value = %d'%dut.RDY_out_get.value)
+        dut._log.info("Sum Value = %d"% dut.out_get.value) 
+        assert exp_sum == dut.out_get.value, 'Test Fail'
+        dut._log.info("Test Pass")
+    elif config_addr_test == True:
+        dut._log.info("Detected Wrong Configuration Address")
+        dut._log.info("Sum Value = %d"% dut.out_get.value) 
+        assert exp_sum == dut.out_get.value, 'Test Fail'
+        dut._log.info("Test Pass")
+    else:
+        dut._log.info("Sum Value = %d"% dut.out_get.value) 
+        assert exp_sum == dut.out_get.value, 'Test Fail'
+        dut._log.info("Test Pass")
+    
     dut.EN_out_get <= 0
     await RisingEdge(dut.CLK)
     raise tb.scoreboard.result
