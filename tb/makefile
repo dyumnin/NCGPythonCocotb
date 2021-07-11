@@ -1,6 +1,6 @@
 SIM = icarus
 TOPLEVEL_LANG = verilog
-VERILOG_SOURCES += $(shell pwd)/sumofN.v
+VERILOG_SOURCES += $(shell pwd)/../rtl/sumofN.v
 TOPLEVEL = sumofN
 MODULE = SumN_tb
 
